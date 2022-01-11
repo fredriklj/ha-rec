@@ -10,17 +10,14 @@
 [![Discord][discord-shield]][discord]
 [![Community Forum][forum-shield]][forum]
 
-_Component to integrate with [ha-rec][ha-rec]._
-
-**This component will set up the following platforms.**
+This component allows for integration of Rec Temovex balanced ventilation systems with modbus functionality to be integrated into [home assistant](https://home-assistant.io/). It will set up the following platforms:
 
 Platform | Description
 -- | --
+`climate` | A climate control
 `binary_sensor` | Show something `True` or `False`.
 `sensor` | Show info from blueprint API.
 `switch` | Switch something `True` or `False`.
-
-![example][exampleimg]
 
 ## HACS Installation
 
