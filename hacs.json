@@ -1,10 +1,8 @@
 {
-    "name": "Integration blueprint",
+    "name": "REC Temovex",
     "hacs": "1.6.0",
     "domains": [
-        "binary_sensor",
-        "sensor",
-        "switch"
+        "cliemate"
     ],
     "homeassistant": "0.118.0"
 }
