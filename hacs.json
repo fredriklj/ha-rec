@@ -1,8 +1,7 @@
 {
-    "name": "REC Temovex",
-    "hacs": "1.6.0",
-    "domains": [
-        "cliemate"
-    ],
-    "homeassistant": "0.118.0"
+  "name": "Rec Temovex",
+  "content_in_root": false,
+  "render_readme": true,
+  "homeassistant": "2025.2.0",
+  "zip_release": false
 }
