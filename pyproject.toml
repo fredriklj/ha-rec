@@ -31,4 +31,7 @@ known-first-party = ["custom_components"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+# Makes custom_components importable, as it is inside Home Assistant.
+# "python -m pytest" does this implicitly; a bare "pytest" does not.
+pythonpath = ["."]
 asyncio_mode = "auto"
