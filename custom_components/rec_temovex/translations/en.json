@@ -1,0 +1,313 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Rec Temovex",
+        "description": "How does Home Assistant reach the unit?",
+        "menu_options": {
+          "tcp": "Modbus TCP (gateway or daemon)",
+          "serial": "Serial RS485 adapter"
+        }
+      },
+      "tcp": {
+        "title": "Modbus TCP",
+        "description": "The address of the gateway or daemon in front of the unit.",
+        "data": {
+          "host": "Host",
+          "port": "Port",
+          "device_id": "Modbus device ID",
+          "name": "Name"
+        },
+        "data_description": {
+          "host": "Hostname or IP address of the Modbus TCP gateway or daemon.",
+          "device_id": "The unit's address on the RS485 bus. The factory default is 1."
+        }
+      },
+      "serial": {
+        "title": "Serial RS485",
+        "description": "An RS485 adapter on this machine, talking Modbus RTU to the unit.",
+        "data": {
+          "serial_port": "Serial port",
+          "baudrate": "Baud rate",
+          "parity": "Parity",
+          "device_id": "Modbus device ID",
+          "name": "Name"
+        },
+        "data_description": {
+          "serial_port": "Device path, such as /dev/ttyUSB0 or /dev/serial/by-id/...",
+          "baudrate": "Must match the unit's Modbus menu. The factory default is 9600.",
+          "parity": "N, E or O. The stop bits follow from this: two without parity, one with.",
+          "device_id": "The unit's address on the RS485 bus. The factory default is 1."
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Could not reach the Modbus endpoint.",
+      "invalid_device": "Something answered, but has none of the registers expected from a Rec Temovex unit. Check the device ID.",
+      "invalid_baudrate": "That is not a baud rate. Give a number, such as 9600.",
+      "not_rec_temovex": "A device answered at that address, but its values are not those of a Rec Temovex unit — temperatures, setpoints or fan speeds outside anything the unit can report. Check the device ID; the details are in the log."
+    },
+    "abort": {
+      "already_configured": "This unit is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Options",
+        "data": {
+          "scan_interval": "Polling interval (seconds)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "climate": {
+      "ventilation": {
+        "state_attributes": {
+          "fan_mode": {
+            "state": {
+              "auto": "Auto",
+              "min": "Minimum flow",
+              "boost": "Boost flow",
+              "max": "Maximum flow",
+              "stove": "Stove flow",
+              "kitchen": "Kitchen flow",
+              "eco": "ECO",
+              "fire": "Fire flow"
+            }
+          },
+          "preset_mode": {
+            "state": {
+              "home": "Home",
+              "away": "Away"
+            }
+          },
+          "hvac_action": {
+            "state": {
+              "recycling": "Recycling",
+              "bypass": "Bypass open"
+            }
+          }
+        }
+      }
+    },
+    "sensor": {
+      "bypass_output": {
+        "name": "Bypass damper"
+      },
+      "cooling_valve": {
+        "name": "Cooling valve"
+      },
+      "desired_temperature": {
+        "name": "Setpoint in force"
+      },
+      "exhaust_fan_speed": {
+        "name": "Extract fan"
+      },
+      "exhaust_temperature": {
+        "name": "Exhaust air"
+      },
+      "extract_temperature": {
+        "name": "Extract air"
+      },
+      "filter_time_left": {
+        "name": "Time to filter alarm"
+      },
+      "flow_state": {
+        "name": "Airflow",
+        "state": {
+          "off": "Off",
+          "min": "Minimum",
+          "eco": "ECO",
+          "normal": "Normal",
+          "eco2": "ECO2",
+          "forced": "Forced"
+        }
+      },
+      "frost_protection_temperature": {
+        "name": "Frost protection"
+      },
+      "heat_recovery_efficiency": {
+        "name": "Heat recovery efficiency"
+      },
+      "heating_valve": {
+        "name": "Heating valve"
+      },
+      "operating_state": {
+        "name": "Operating state",
+        "state": {
+          "off": "Off",
+          "recycling": "Recycling",
+          "heating": "Heating",
+          "bypass": "Bypass open",
+          "cooling": "Cooling",
+          "defrosting": "Defrosting"
+        }
+      },
+      "outdoor_temperature": {
+        "name": "Outdoor air"
+      },
+      "preheat_valve": {
+        "name": "Preheat valve"
+      },
+      "room_temperature": {
+        "name": "Room"
+      },
+      "room_unit_temperature": {
+        "name": "Room unit"
+      },
+      "supply_fan_speed": {
+        "name": "Supply fan"
+      },
+      "supply_temperature": {
+        "name": "Supply air"
+      },
+      "electric_heater": {
+        "name": "Electric heater"
+      },
+      "heat_type": {
+        "name": "Heater type",
+        "state": {
+          "water": "Water (0–10 V)",
+          "electric": "Electric",
+          "water_pwm": "Water (PWM)"
+        }
+      }
+    },
+    "binary_sensor": {
+      "bypass_active": {
+        "name": "Bypass"
+      },
+      "cooling_active": {
+        "name": "Cooling"
+      },
+      "defrosting": {
+        "name": "Defrosting"
+      },
+      "exhaust_fan_alarm": {
+        "name": "Extract fan fault"
+      },
+      "exhaust_fan_manual_alarm": {
+        "name": "Extract fan in manual"
+      },
+      "exhaust_fan_running": {
+        "name": "Extract fan"
+      },
+      "filter_alarm": {
+        "name": "Filter"
+      },
+      "filter_guard_alarm": {
+        "name": "Filter guard"
+      },
+      "fire_alarm": {
+        "name": "Fire alarm"
+      },
+      "frost_risk": {
+        "name": "Frost risk"
+      },
+      "heating_active": {
+        "name": "Heating"
+      },
+      "supply_fan_alarm": {
+        "name": "Supply fan fault"
+      },
+      "supply_fan_manual_alarm": {
+        "name": "Supply fan in manual"
+      },
+      "supply_fan_running": {
+        "name": "Supply fan"
+      },
+      "electric_heater_alarm": {
+        "name": "Electric heater overheated"
+      }
+    },
+    "switch": {
+      "bypass_mode": {
+        "name": "Bypass"
+      },
+      "cool_recycling_enabled": {
+        "name": "Cool recycling"
+      },
+      "cooling_mode": {
+        "name": "Cooling"
+      },
+      "heating_mode": {
+        "name": "Heating"
+      },
+      "night_cooling_enabled": {
+        "name": "Night cooling"
+      },
+      "preheat_damper_mode": {
+        "name": "Preheat damper"
+      },
+      "preheat_electric_mode": {
+        "name": "Electric preheater"
+      }
+    },
+    "number": {
+      "away_setpoint_offset": {
+        "name": "Away setpoint offset"
+      },
+      "exhaust_fan_forced": {
+        "name": "Extract fan, forced flow"
+      },
+      "exhaust_fan_kitchen": {
+        "name": "Extract fan, kitchen flow"
+      },
+      "exhaust_fan_max": {
+        "name": "Extract fan, maximum flow"
+      },
+      "exhaust_fan_min": {
+        "name": "Extract fan, minimum flow"
+      },
+      "exhaust_fan_night_cooling": {
+        "name": "Extract fan, night cooling"
+      },
+      "exhaust_fan_normal": {
+        "name": "Extract fan, normal flow"
+      },
+      "exhaust_fan_stove": {
+        "name": "Extract fan, stove flow"
+      },
+      "preheat_outdoor_limit": {
+        "name": "Preheat outdoor limit"
+      },
+      "preheat_setpoint": {
+        "name": "Preheat setpoint"
+      },
+      "supply_fan_forced": {
+        "name": "Supply fan, forced flow"
+      },
+      "supply_fan_kitchen": {
+        "name": "Supply fan, kitchen flow"
+      },
+      "supply_fan_max": {
+        "name": "Supply fan, maximum flow"
+      },
+      "supply_fan_min": {
+        "name": "Supply fan, minimum flow"
+      },
+      "supply_fan_night_cooling": {
+        "name": "Supply fan, night cooling"
+      },
+      "supply_fan_normal": {
+        "name": "Supply fan, normal flow"
+      },
+      "supply_fan_stove": {
+        "name": "Supply fan, stove flow"
+      },
+      "supply_setpoint_max": {
+        "name": "Supply setpoint max"
+      },
+      "supply_setpoint_min": {
+        "name": "Supply setpoint min"
+      }
+    }
+  },
+  "exceptions": {
+    "fan_mode_not_selectable": {
+      "message": "{mode} is a flow level the unit only enters through its own stove, kitchen or fire function, which is triggered by a digital input rather than over Modbus."
+    }
+  }
+}

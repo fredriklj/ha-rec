@@ -1,0 +1,34 @@
+[tool.ruff]
+target-version = "py313"
+line-length = 88
+
+[tool.ruff.lint]
+select = [
+    "E",    # pycodestyle
+    "F",    # pyflakes
+    "W",    # warnings
+    "I",    # isort
+    "UP",   # pyupgrade
+    "B",    # bugbear
+    "SIM",  # simplify
+    "RUF",
+    "D",    # pydocstyle
+    "ASYNC",
+    "T20",  # no print in the integration
+]
+ignore = ["D203", "D213"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["D"]
+"scripts/*" = ["T20", "D"]
+# Home Assistant entity classes declare _attr_* lists as plain class
+# attributes; that is the framework's own idiom, not an oversight.
+"custom_components/*" = ["RUF012"]
+
+[tool.ruff.lint.isort]
+force-sort-within-sections = true
+known-first-party = ["custom_components"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"

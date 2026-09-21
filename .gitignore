@@ -1,6 +1,23 @@
-__pycache__
-pythonenv*
-venv
-.venv
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# Virtual environments
+.venv/
+venv/
+
+# Tooling
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
 .coverage
-.idea
+htmlcov/
+
+# Editors and OS
+.vscode/
+.idea/
+*.swp
+.DS_Store

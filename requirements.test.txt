@@ -1,0 +1,5 @@
+# Pins pytest, pytest-asyncio and a matching Home Assistant.
+pytest-homeassistant-custom-component
+pymodbus>=3.10.0
+pyserial>=3.5
+ruff>=0.8

@@ -1,0 +1,156 @@
+{
+  "entity": {
+    "sensor": {
+      "supply_fan_speed": {
+        "default": "mdi:fan"
+      },
+      "exhaust_fan_speed": {
+        "default": "mdi:fan"
+      },
+      "flow_state": {
+        "default": "mdi:fan",
+        "state": {
+          "off": "mdi:fan-off"
+        }
+      },
+      "operating_state": {
+        "default": "mdi:hvac",
+        "state": {
+          "off": "mdi:hvac-off",
+          "recycling": "mdi:recycle",
+          "heating": "mdi:radiator",
+          "bypass": "mdi:arrow-decision",
+          "cooling": "mdi:snowflake",
+          "defrosting": "mdi:snowflake-melt"
+        }
+      },
+      "filter_time_left": {
+        "default": "mdi:air-filter"
+      },
+      "room_temperature": {
+        "default": "mdi:thermometer"
+      },
+      "room_unit_temperature": {
+        "default": "mdi:thermometer"
+      },
+      "heat_type": {
+        "default": "mdi:radiator",
+        "state": {
+          "electric": "mdi:flash"
+        }
+      },
+      "bypass_output": {
+        "default": "mdi:directions-fork"
+      },
+      "heat_recovery_efficiency": {
+        "default": "mdi:swap-horizontal-bold"
+      },
+      "electric_heater": {
+        "default": "mdi:radiator"
+      },
+      "preheat_valve": {
+        "default": "mdi:valve"
+      },
+      "heating_valve": {
+        "default": "mdi:valve"
+      },
+      "cooling_valve": {
+        "default": "mdi:valve"
+      }
+    },
+    "binary_sensor": {
+      "supply_fan_running": {
+        "default": "mdi:fan-off",
+        "state": {
+          "on": "mdi:fan"
+        }
+      },
+      "exhaust_fan_running": {
+        "default": "mdi:fan-off",
+        "state": {
+          "on": "mdi:fan"
+        }
+      },
+      "defrosting": {
+        "default": "mdi:snowflake"
+      },
+      "filter_alarm": {
+        "default": "mdi:air-filter"
+      },
+      "filter_guard_alarm": {
+        "default": "mdi:air-filter"
+      }
+    },
+    "number": {
+      "supply_fan_min": {
+        "default": "mdi:speedometer"
+      },
+      "exhaust_fan_min": {
+        "default": "mdi:speedometer"
+      },
+      "supply_fan_normal": {
+        "default": "mdi:speedometer"
+      },
+      "exhaust_fan_normal": {
+        "default": "mdi:speedometer"
+      },
+      "supply_fan_forced": {
+        "default": "mdi:speedometer"
+      },
+      "exhaust_fan_forced": {
+        "default": "mdi:speedometer"
+      },
+      "supply_fan_max": {
+        "default": "mdi:speedometer"
+      },
+      "exhaust_fan_max": {
+        "default": "mdi:speedometer"
+      },
+      "supply_fan_kitchen": {
+        "default": "mdi:speedometer"
+      },
+      "exhaust_fan_kitchen": {
+        "default": "mdi:speedometer"
+      },
+      "supply_fan_stove": {
+        "default": "mdi:speedometer"
+      },
+      "exhaust_fan_stove": {
+        "default": "mdi:speedometer"
+      },
+      "supply_fan_night_cooling": {
+        "default": "mdi:speedometer"
+      },
+      "exhaust_fan_night_cooling": {
+        "default": "mdi:speedometer"
+      }
+    },
+    "climate": {
+      "ventilation": {
+        "default": "mdi:thermostat",
+        "state": {
+          "off": "mdi:fan-off",
+          "auto": "mdi:alpha-a-box"
+        },
+        "state_attributes": {
+          "fan_mode": {
+            "state": {
+              "auto": "mdi:alpha-a-box",
+              "boost": "mdi:play",
+              "max": "mdi:fast-forward",
+              "eco": "mdi:leaf",
+              "off": "mdi:fan-off"
+            }
+          },
+          "hvac_action": {
+            "state": {
+              "recycling": "mdi:recycle",
+              "bypass": "mdi:arrow-decision",
+              "off": "mdi:fan-off"
+            }
+          }
+        }
+      }
+    }
+  }
+}

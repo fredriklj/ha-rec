@@ -1,0 +1,313 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Rec Temovex",
+        "description": "Hur når Home Assistant aggregatet?",
+        "menu_options": {
+          "tcp": "Modbus TCP (gateway eller demon)",
+          "serial": "Seriell RS485-adapter"
+        }
+      },
+      "tcp": {
+        "title": "Modbus TCP",
+        "description": "Adressen till gatewayen eller demonen framför aggregatet.",
+        "data": {
+          "host": "Värd",
+          "port": "Port",
+          "device_id": "Modbus-enhets-ID",
+          "name": "Namn"
+        },
+        "data_description": {
+          "host": "Värdnamn eller IP-adress till Modbus TCP-gatewayen eller demonen.",
+          "device_id": "Aggregatets adress på RS485-bussen. Fabriksinställningen är 1."
+        }
+      },
+      "serial": {
+        "title": "Seriell RS485",
+        "description": "En RS485-adapter i den här maskinen, som talar Modbus RTU med aggregatet.",
+        "data": {
+          "serial_port": "Serieport",
+          "baudrate": "Hastighet",
+          "parity": "Paritet",
+          "device_id": "Modbus-enhets-ID",
+          "name": "Namn"
+        },
+        "data_description": {
+          "serial_port": "Enhetssökväg, till exempel /dev/ttyUSB0 eller /dev/serial/by-id/...",
+          "baudrate": "Måste stämma med aggregatets modbus-meny. Fabriksinställningen är 9600.",
+          "parity": "N, E eller O. Stoppbitarna följer av detta: två utan paritet, en med.",
+          "device_id": "Aggregatets adress på RS485-bussen. Fabriksinställningen är 1."
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Kunde inte nå Modbus-anslutningen.",
+      "invalid_device": "Något svarade, men saknar samtliga register som förväntas av ett Rec Temovex-aggregat. Kontrollera enhets-ID:t.",
+      "invalid_baudrate": "Det är ingen hastighet. Ange ett tal, till exempel 9600.",
+      "not_rec_temovex": "En enhet svarade på den adressen, men värdena är inte ett Rec Temovex-aggregats — temperaturer, börvärden eller fläkthastigheter utanför vad aggregatet kan rapportera. Kontrollera enhets-ID:t; detaljerna finns i loggen."
+    },
+    "abort": {
+      "already_configured": "Aggregatet är redan konfigurerat."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Inställningar",
+        "data": {
+          "scan_interval": "Avläsningsintervall (sekunder)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "climate": {
+      "ventilation": {
+        "state_attributes": {
+          "fan_mode": {
+            "state": {
+              "auto": "Auto",
+              "min": "Minflöde",
+              "boost": "Forcering",
+              "max": "Maxflöde",
+              "stove": "Spisflöde",
+              "kitchen": "Köksflöde",
+              "eco": "ECO",
+              "fire": "Brandflöde"
+            }
+          },
+          "preset_mode": {
+            "state": {
+              "home": "Hemma",
+              "away": "Borta"
+            }
+          },
+          "hvac_action": {
+            "state": {
+              "recycling": "Återvinning",
+              "bypass": "Bypass öppen"
+            }
+          }
+        }
+      }
+    },
+    "sensor": {
+      "bypass_output": {
+        "name": "Bypasspjäll"
+      },
+      "cooling_valve": {
+        "name": "Kylventil"
+      },
+      "desired_temperature": {
+        "name": "Aktivt börvärde"
+      },
+      "exhaust_fan_speed": {
+        "name": "Frånluftsfläkt"
+      },
+      "exhaust_temperature": {
+        "name": "Avluft"
+      },
+      "extract_temperature": {
+        "name": "Frånluft"
+      },
+      "filter_time_left": {
+        "name": "Tid till filterlarm"
+      },
+      "flow_state": {
+        "name": "Luftflöde",
+        "state": {
+          "off": "Av",
+          "min": "Minflöde",
+          "eco": "ECO",
+          "normal": "Normal",
+          "eco2": "ECO2",
+          "forced": "Forcerat"
+        }
+      },
+      "frost_protection_temperature": {
+        "name": "Frysskydd"
+      },
+      "heat_recovery_efficiency": {
+        "name": "Återvinningsgrad"
+      },
+      "heating_valve": {
+        "name": "Värmeventil"
+      },
+      "operating_state": {
+        "name": "Drifttillstånd",
+        "state": {
+          "off": "Av",
+          "recycling": "Återvinning",
+          "heating": "Värmer",
+          "bypass": "Bypass öppen",
+          "cooling": "Kyler",
+          "defrosting": "Avfrostar"
+        }
+      },
+      "outdoor_temperature": {
+        "name": "Uteluft"
+      },
+      "preheat_valve": {
+        "name": "Förvärmningsventil"
+      },
+      "room_temperature": {
+        "name": "Rumstemperatur"
+      },
+      "room_unit_temperature": {
+        "name": "Rumsgivare"
+      },
+      "supply_fan_speed": {
+        "name": "Tilluftsfläkt"
+      },
+      "supply_temperature": {
+        "name": "Tilluft"
+      },
+      "electric_heater": {
+        "name": "Elvärmare"
+      },
+      "heat_type": {
+        "name": "Typ av eftervärmare",
+        "state": {
+          "water": "Vatten (0–10 V)",
+          "electric": "El",
+          "water_pwm": "Vatten (PWM)"
+        }
+      }
+    },
+    "binary_sensor": {
+      "bypass_active": {
+        "name": "Bypass"
+      },
+      "cooling_active": {
+        "name": "Kyla"
+      },
+      "defrosting": {
+        "name": "Avfrostning"
+      },
+      "exhaust_fan_alarm": {
+        "name": "Fel frånluftsfläkt"
+      },
+      "exhaust_fan_manual_alarm": {
+        "name": "Frånluftsfläkt i manuellt läge"
+      },
+      "exhaust_fan_running": {
+        "name": "Frånluftsfläkt"
+      },
+      "filter_alarm": {
+        "name": "Filter"
+      },
+      "filter_guard_alarm": {
+        "name": "Filtervakt"
+      },
+      "fire_alarm": {
+        "name": "Brandlarm"
+      },
+      "frost_risk": {
+        "name": "Frysrisk"
+      },
+      "heating_active": {
+        "name": "Värme"
+      },
+      "supply_fan_alarm": {
+        "name": "Fel tilluftsfläkt"
+      },
+      "supply_fan_manual_alarm": {
+        "name": "Tilluftsfläkt i manuellt läge"
+      },
+      "supply_fan_running": {
+        "name": "Tilluftsfläkt"
+      },
+      "electric_heater_alarm": {
+        "name": "Elvärmare överhettad"
+      }
+    },
+    "switch": {
+      "bypass_mode": {
+        "name": "Bypassreglering"
+      },
+      "cool_recycling_enabled": {
+        "name": "Kylåtervinning"
+      },
+      "cooling_mode": {
+        "name": "Kylreglering"
+      },
+      "heating_mode": {
+        "name": "Värmereglering"
+      },
+      "night_cooling_enabled": {
+        "name": "Nattkyla"
+      },
+      "preheat_damper_mode": {
+        "name": "Förvärmningsspjäll"
+      },
+      "preheat_electric_mode": {
+        "name": "Förvärmare (el)"
+      }
+    },
+    "number": {
+      "away_setpoint_offset": {
+        "name": "Börvärdesförskjutning borta"
+      },
+      "exhaust_fan_forced": {
+        "name": "Frånluftsfläkt, forcerat flöde"
+      },
+      "exhaust_fan_kitchen": {
+        "name": "Frånluftsfläkt, köksflöde"
+      },
+      "exhaust_fan_max": {
+        "name": "Frånluftsfläkt, maxflöde"
+      },
+      "exhaust_fan_min": {
+        "name": "Frånluftsfläkt, minflöde"
+      },
+      "exhaust_fan_night_cooling": {
+        "name": "Frånluftsfläkt, nattkyla"
+      },
+      "exhaust_fan_normal": {
+        "name": "Frånluftsfläkt, normalflöde"
+      },
+      "exhaust_fan_stove": {
+        "name": "Frånluftsfläkt, brasflöde"
+      },
+      "preheat_outdoor_limit": {
+        "name": "Utegräns förvärmning"
+      },
+      "preheat_setpoint": {
+        "name": "Börvärde förvärmning"
+      },
+      "supply_fan_forced": {
+        "name": "Tilluftsfläkt, forcerat flöde"
+      },
+      "supply_fan_kitchen": {
+        "name": "Tilluftsfläkt, köksflöde"
+      },
+      "supply_fan_max": {
+        "name": "Tilluftsfläkt, maxflöde"
+      },
+      "supply_fan_min": {
+        "name": "Tilluftsfläkt, minflöde"
+      },
+      "supply_fan_night_cooling": {
+        "name": "Tilluftsfläkt, nattkyla"
+      },
+      "supply_fan_normal": {
+        "name": "Tilluftsfläkt, normalflöde"
+      },
+      "supply_fan_stove": {
+        "name": "Tilluftsfläkt, brasflöde"
+      },
+      "supply_setpoint_max": {
+        "name": "Max tilluftsbörvärde"
+      },
+      "supply_setpoint_min": {
+        "name": "Min tilluftsbörvärde"
+      }
+    }
+  },
+  "exceptions": {
+    "fan_mode_not_selectable": {
+      "message": "{mode} är en flödesnivå som aggregatet bara går in i via sin egen bras-, köks- eller brandfunktion, som startas via en digital ingång och inte över Modbus."
+    }
+  }
+}
