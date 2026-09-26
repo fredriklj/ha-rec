@@ -1,7 +1,5 @@
 # Rec Temovex for Home Assistant
-
-[![Validate](https://github.com/fredriklj/ha-rec/actions/workflows/validate.yml/badge.svg)](https://github.com/fredriklj/ha-rec/actions/workflows/validate.yml)
-[![Tests](https://github.com/fredriklj/ha-rec/actions/workflows/tests.yml/badge.svg)](https://github.com/fredriklj/ha-rec/actions/workflows/tests.yml)
+[![CI](https://github.com/fredriklj/ha-rec/actions/workflows/push.yaml/badge.svg)](https://github.com/fredriklj/ha-rec/actions/workflows/push.yaml)
 [![HACS Custom](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://hacs.xyz)
 
 Home Assistant integration for **Rec Temovex** ventilation units with a Modbus
