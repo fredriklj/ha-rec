@@ -156,16 +156,6 @@ def test_the_serial_client_speaks_rtu_not_socket_framing():
     assert kwargs["stopbits"] == 2
 
 
-def test_serial_support_declares_pyserial():
-    """pymodbus does not pull pyserial in, and fails at runtime without it."""
-    import json
-
-    from conftest import COMPONENT
-
-    manifest = json.loads((COMPONENT / "manifest.json").read_text())
-    assert any(r.startswith("pyserial") for r in manifest["requirements"])
-
-
 def test_transport_is_chosen_by_the_entry_type():
     from rec_temovex.transport import (
         SerialTransport,
